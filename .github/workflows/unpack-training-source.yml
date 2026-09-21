@@ -1,0 +1,28 @@
+name: Temporary unpack training source
+on:
+  push:
+    paths:
+      - ".github/workflows/unpack-training-source.yml"
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack BIO-RADAR source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, gzip
+          names = ["bundle/a.txt","bundle/c1.txt","bundle/c2.txt","bundle/b.txt"]
+          payload = "".join(Path(n).read_text().strip() for n in names)
+          html = gzip.decompress(base64.b64decode(payload)).decode("utf-8")
+          Path("source-unpacked.html").write_text(html)
+          PY
+      - name: Commit unpacked source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source-unpacked.html
+          git diff --cached --quiet || (git commit -m "Temporary: unpack BIO-RADAR source for localization" && git push)
