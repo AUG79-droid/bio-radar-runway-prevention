@@ -10,7 +10,7 @@ const partial=[
 ["Stage ","Etapa "],["Learning checkpoint ","Punto de aprendizaje "],["Score","Puntuación"],["Continue","Continuar"],
 ["Evaluate","Evaluar"],["Back","Volver"],["Home","Inicio"],["Speak","Escuchar"],["Flight Safety","Seguridad de vuelo"],
 ["Wildlife Protection","Protección de fauna"],["Operational Continuity","Continuidad operativa"],["Evidence & Compliance","Evidencia y cumplimiento"],
-["Critical errors","Errores críticos"],["Live performance","Rendimiento en directo"]
+["Critical errors","Errores críticos"],["Live performance","Rendimiento en directo"],["A400M training context · cleaned grayscale reference image for learning use","Contexto formativo A400M · imagen de referencia en escala de grises preparada para uso didáctico"]
 ];
 function tr(v){
   if(lang!=="es"||!v)return v;
