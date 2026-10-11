@@ -45,6 +45,14 @@ jobs:
                },screen);
                reports.push({lang,viewport:view.k,...state});
                if(!state.active||state.screenOverflow)errors.push(lang+'/'+view.k+'/'+screen+' invalid or horizontal overflow');
+               if(state.screenOverflow){
+                 const offenders=await page.evaluate(screen=>{
+                   const root=document.getElementById(screen),b=root.getBoundingClientRect(),els=[...root.querySelectorAll('*')];
+                   return els.map(e=>({tag:e.tagName,cls:(e.className?.baseVal||e.className||'').toString().slice(0,100),left:Math.round(e.getBoundingClientRect().left),right:Math.round(e.getBoundingClientRect().right),width:Math.round(e.getBoundingClientRect().width)}))
+                     .filter(x=>x.right>b.right+8||x.left<b.left-8).sort((a,b)=>b.right-a.right).slice(0,12);
+                 },screen);
+                 console.log('BIO_OVERFLOW_DIAG='+JSON.stringify({lang,screen,viewport:view.k,offenders}));
+               }
                if(view.k==='desktop')await page.screenshot({path:'screenshots/'+lang+'-'+screen+'.png',fullPage:false});
              }
              await page.close();
