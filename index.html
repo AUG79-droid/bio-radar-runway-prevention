@@ -37,6 +37,20 @@ button{font:inherit}.shell{max-width:1460px;margin:auto;padding:16px}.topbar{pos
 <link rel="stylesheet" href="stage1-game.css">
 
 <style>
+/* Prevent min-content table width from widening the theory grid on phones. */
+.theory{grid-template-columns:repeat(2,minmax(0,1fr));min-width:0;max-width:100%}
+.theory-card{min-width:0;max-width:100%;overflow-wrap:anywhere;box-sizing:border-box}
+@media(max-width:960px){
+  .theory{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:700px){
+ #briefing .learning-table,#theory1 .learning-table{width:100%;min-width:0;max-width:100%;overflow-x:auto}
+ #briefing .theory-card,#theory1 .theory-card{min-width:0}
+}
+</style>
+
+
+<style>
 /* Mobile training tables: keep the briefing and theory readable without page overflow */
 @media(max-width:700px){
  #briefing .learning-table,#theory1 .learning-table{
