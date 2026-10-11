@@ -50,3 +50,11 @@
  #mission1 .stage1-option-letter{padding:5px}
  #mission1 .map .hotspot{width:36px;height:36px}
 }
+
+/* Stage 6 — clear selection requirement and live progress in both languages */
+#mission6 .plan-requirements{margin:6px 0 18px;padding:17px 19px;border:1px solid #4a7e9e;background:#143249;border-radius:15px;color:#f1f8ff}
+#mission6 .plan-requirements strong{display:block;font-size:18px;line-height:1.4;color:#fff;margin-bottom:8px}
+#mission6 .plan-requirements p{color:#deedf8;font-size:15px;line-height:1.6;margin:0 0 12px}
+#mission6 .plan-selection-count{display:inline-flex;align-items:center;border:1px solid #65b2d2;background:#0d273c;padding:9px 13px;border-radius:10px;font-size:15px;font-weight:800;line-height:1.4;color:#fff;max-width:100%}
+#mission6 .plan-selection-count.plan-minimum-count{border-color:#8fcef0;background:#194763}
+@media(max-width:600px){#mission6 .plan-requirements{padding:14px}#mission6 .plan-requirements strong{font-size:17px}#mission6 .plan-selection-count{font-size:14px}}
