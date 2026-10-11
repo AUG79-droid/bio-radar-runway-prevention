@@ -1,0 +1,64 @@
+name: Bio-Radar Bilingual UI Audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - index.html
+      - stage1-game.css
+      - stage1-game.js
+      - localization.js
+      - translations-es-*.js
+      - .github/workflows/bilingual-ui-audit.yml
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install chromium
+      - name: Review all stages and lessons in Spanish and English
+        run: |
+          python3 -m http.server 8080 >/tmp/bio-http.log 2>&1 &
+          mkdir -p screenshots
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('fs');
+          (async()=>{
+           const browser=await chromium.launch({args:['--no-sandbox']});
+           const names=['home','how','briefing','mission1','theory1','mission2','theory2','mission3','theory3','mission4','theory4','mission5','theory5','mission6','knowledge','results'];
+           const reports=[],errors=[];
+           for(const lang of ['es','en'])for(const view of [{w:1440,h:900,k:'desktop'},{w:390,h:844,k:'mobile'}]){
+             const page=await browser.newPage({viewport:{width:view.w,height:view.h}});
+             page.on('pageerror',e=>errors.push(lang+'/'+view.k+': '+e.message));
+             await page.goto('http://127.0.0.1:8080/?hubLang='+lang,{waitUntil:'load'});await page.waitForTimeout(250);
+             for(const screen of names){
+               await page.evaluate(screen=>go(screen,false),screen);
+               await page.waitForTimeout(50);
+               const state=await page.evaluate(screen=>{
+                 const e=document.getElementById(screen),nav=document.querySelector('#backBtn');
+                 return {screen,active:e?.classList.contains('active'),heading:e?.querySelector('h1,h2')?.innerText||'',scrollable:document.documentElement.scrollHeight>=innerHeight,buttons:e?.querySelectorAll('button').length||0,screenOverflow:e?e.scrollWidth>e.clientWidth+12:false};
+               },screen);
+               reports.push({lang,viewport:view.k,...state});
+               if(!state.active||state.screenOverflow)errors.push(lang+'/'+view.k+'/'+screen+' invalid or horizontal overflow');
+               if(view.k==='desktop')await page.screenshot({path:'screenshots/'+lang+'-'+screen+'.png',fullPage:false});
+             }
+             await page.close();
+           }
+           await browser.close();
+           fs.writeFileSync('ui-bio-report.json',JSON.stringify({reports,errors},null,2));
+           console.log('BIO_UI_AUDIT='+JSON.stringify({screens:reports.length,errors}));
+           if(errors.length)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          NODE
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bio-radar-visual-audit
+          path: |
+            screenshots/
+            ui-bio-report.json
