@@ -35,6 +35,43 @@ button{font:inherit}.shell{max-width:1460px;margin:auto;padding:16px}.topbar{pos
 .stage4-photo{min-height:480px;background-image:linear-gradient(180deg,rgba(10,27,42,.28),rgba(8,18,29,.38)),url('assets/aircraft.webp');background-size:cover;background-position:30% 42%;display:flex;flex-direction:column;justify-content:flex-start}.stage4-photo h3{font-size:34px;margin-top:210px;text-shadow:0 2px 8px rgba(0,0,0,.45)}.stage4-photo p{max-width:90%;background:rgba(7,18,29,.36);padding:8px 10px;border-radius:10px}.stage4-photo .chip{align-self:flex-start}.plan-card,.plan-card *{text-shadow:none}.plan-card h3,.plan-card h4,.plan-card b{color:#f3f9ff!important}.plan-card p,.plan-card span,.plan-card small{color:#dbe7f2!important}.plan-card.good h3,.plan-card.good b{color:#f2fff8!important}.plan-card.good p,.plan-card.good span{color:#dff7ea!important}.plan-card.bad h3,.plan-card.bad b{color:#fff5ef!important}.plan-card.bad p,.plan-card.bad span{color:#ffe2d3!important}@media(max-width:1050px){.hero,.mission-layout,.result{grid-template-columns:1fr}.hero-photo{min-height:520px}.stat-grid{grid-template-columns:repeat(2,1fr)}.grid3,.theory,.plan-grid{grid-template-columns:1fr}.theory-card.wide{grid-column:auto}.tool-grid{grid-template-columns:1fr}.page{padding:21px}.metric{grid-template-columns:120px 1fr 38px}.timeline{grid-template-columns:1fr 1fr}.avatar-wrap{right:8px;bottom:8px;width:220px}.topbar{align-items:flex-start}.nav{justify-content:flex-end}}
 </style>
 <link rel="stylesheet" href="stage1-game.css">
+
+<style>
+/* Readability pass v1: shared styling for the English and Spanish UI */
+body{font-size:16px;line-height:1.55}
+.brand small{font-size:13px;line-height:1.4}
+.eyebrow{font-size:14px;letter-spacing:.1em}
+.stat span{font-size:13px;line-height:1.5;letter-spacing:.04em}
+.chip{font-size:13px;line-height:1.35;letter-spacing:.045em}
+.photo-credit{font-size:12px}
+.map .map-training-label{font-size:13px;line-height:1.4}
+.map-legend span{font-size:13px;line-height:1.4}
+.metric label,.metric b{font-size:15px;line-height:1.45}
+.choice{font-size:16px;line-height:1.5}
+.choice strong,.plan-card b{font-size:17px;line-height:1.4}
+.choice span,.plan-card span,.tool-card span{font-size:15px;line-height:1.55}
+.choice small{font-size:13px;line-height:1.45}
+.tick{font-size:14px;line-height:1.5}
+.cost{font-size:13px}
+.ref{font-size:14px;line-height:1.6}
+.footer{font-size:13px;line-height:1.55}
+.avatar-wrap{width:290px}
+.avatar-head b{font-size:15px}
+.avatar-head span{font-size:13px;line-height:1.4}
+.avatar-msg{font-size:14px;line-height:1.55}
+.avatar-controls .btn{font-size:13px;line-height:1.3;min-height:36px}
+.btn{font-size:15px;line-height:1.4;min-height:43px}
+#mission1 .stage1-final .choice span{font-size:15px}
+#mission1 .stage1-final .choice small{font-size:13px}
+#mission6 .plan-requirements{font-size:16px;line-height:1.55}
+#mission6 .plan-selection-count{font-size:15px;line-height:1.4}
+@media(max-width:780px){
+ .avatar-wrap{width:min(270px,74vw);right:8px;bottom:8px}
+ .map-legend{max-width:94%}
+ .map-legend span{font-size:12px}
+ .stat span{font-size:12px}
+}
+</style>
 </head>
 <body>
 <a id="sn-hub-return" href="https://aug79-droid.github.io/sustainability-navigator/?lang=es#applications" aria-label="Volver al Sustainability Hub">← Volver al Sustainability Hub</a>
