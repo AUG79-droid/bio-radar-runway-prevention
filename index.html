@@ -37,6 +37,26 @@ button{font:inherit}.shell{max-width:1460px;margin:auto;padding:16px}.topbar{pos
 <link rel="stylesheet" href="stage1-game.css">
 
 <style>
+/* Mobile training tables: keep the briefing and theory readable without page overflow */
+@media(max-width:700px){
+ #briefing .learning-table,#theory1 .learning-table{
+   display:block;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;
+   box-sizing:border-box;scrollbar-width:auto;scrollbar-color:#6baac5 #0a2035;
+   border:1px solid #365a6f;
+ }
+ #briefing .learning-table tbody,#theory1 .learning-table tbody{
+   display:table;min-width:620px;border-collapse:collapse;
+ }
+ #briefing .learning-table th,#briefing .learning-table td,
+ #theory1 .learning-table th,#theory1 .learning-table td{
+   min-width:135px;max-width:260px;overflow-wrap:break-word;line-height:1.55;
+ }
+ #briefing .page,#theory1 .page{min-width:0}
+}
+</style>
+
+
+<style>
 /* Readability pass v1: shared styling for the English and Spanish UI */
 body{font-size:16px;line-height:1.55}
 .brand small{font-size:13px;line-height:1.4}
