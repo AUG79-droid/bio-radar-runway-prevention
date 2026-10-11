@@ -1,0 +1,52 @@
+/* BIO-RADAR: contextual Stage 1 scenario decisions. */
+#mission1 .stage1-progress{
+  background:#122d40;border:1px solid #4d7890;border-radius:16px;
+  padding:16px 18px;display:grid;gap:8px;margin-bottom:12px
+}
+#mission1 .stage1-progress strong{font-size:17px;color:#fff}
+#mission1 .stage1-progress span{font-size:15px;line-height:1.55;color:#e1ecf4}
+#mission1 .stage1-jump{width:fit-content;border:1px solid #5fcfff;background:#0e4867;color:#fff;font-size:15px;font-weight:800;border-radius:10px;padding:10px 15px;cursor:pointer}
+#mission1 #hotInfo{font-size:15px;line-height:1.65;color:#eef5fc}
+#mission1 #hotInfo b{display:block;font-size:17px;margin-bottom:7px;color:#fff}
+#mission1 #hotInfo p{margin:0 0 7px}
+#mission1 #hotInfo small{font-size:13px;color:#c8dce8}
+#mission1 .stage1-spot{border:1px solid #3b6988;background:#0b2236;border-radius:17px;padding:17px;margin:12px 0 15px}
+#mission1 .stage1-spot h3{font-size:19px;color:#fff;margin:0 0 15px;line-height:1.4}
+#mission1 .stage1-empty{color:#dce9f5;font-size:15px;line-height:1.6;margin:0}
+#mission1 .stage1-options{display:grid;gap:11px}
+#mission1 .stage1-option{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:start;background:#163148;border:2px solid #355d79;border-radius:13px;color:#f3f9fc;text-align:left;padding:14px;cursor:pointer;line-height:1.5;min-height:80px;width:100%}
+#mission1 .stage1-option:hover{border-color:#6ad0f6;background:#1d3b55}
+#mission1 .stage1-option.chosen{border-color:#75dfff;background:#174660;box-shadow:0 0 0 2px #4fcbed30}
+#mission1 .stage1-option-letter{border:1px solid #6ab6d7;border-radius:9px;padding:7px;text-align:center;font-size:16px;font-weight:900}
+#mission1 .stage1-option strong{font-size:15px;display:block;margin-bottom:5px}
+#mission1 .stage1-option small{display:block;font-size:14px;line-height:1.55;color:#d5e5f0}
+#mission1 .stage1-outcome{padding:13px 15px;border-left:4px solid #60d2f3;background:#18394e;border-radius:9px;font-size:14px;line-height:1.6;color:#e7f5fb;margin-top:15px}
+#mission1 .stage1-outcome strong{display:block;font-size:15px;color:#fff;margin-bottom:6px}
+#mission1 .stage1-outcome p{margin:0}
+#mission1 .stage1-final{padding:18px 16px 16px;border-radius:18px;border:2px solid #e4ba63;background:#112638;margin:17px 0}
+#mission1 .stage1-final[hidden]{display:none!important}
+#mission1 .stage1-final-title{font-size:12px;letter-spacing:.08em;font-weight:900;color:#fed477;margin-bottom:8px}
+#mission1 .stage1-final h3{color:#fff;font-size:20px;margin:0 0 7px;line-height:1.35}
+#mission1 .stage1-final>p{color:#d8e8f2;font-size:15px;line-height:1.6;margin:0 0 16px}
+#mission1 .stage1-final .choice{font-size:15px;line-height:1.45}
+#mission1 .stage1-final .choice span{font-size:14px;line-height:1.55}
+#mission1 .stage1-final .choice small{font-size:13px}
+#mission1 .map .hotspot.active-hotspot{border-color:#fff;color:#fff;background:#11658e;box-shadow:0 0 0 8px rgba(255,255,255,.24)}
+#mission1 .map .hotspot:after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(255,255,255,.14);pointer-events:none}
+#mission1 .hotspot.h1{left:25%;top:67%}
+#mission1 .hotspot.h2{left:86%;top:39%}
+#mission1 .hotspot.h3{left:31%;top:15%}
+#mission1 .hotspot.h4{left:89%;top:61%}
+#mission1 .hotspot.h5{left:56%;top:38%}
+#mission1 .hotspot.h6{left:63%;top:62%}
+#mission1 .stage1-option:focus-visible,#mission1 .stage1-jump:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:1050px){
+ #mission1 .stage1-option{min-height:0}
+ #mission1 .stage1-spot h3{font-size:18px}
+}
+@media(max-width:550px){
+ #mission1 .stage1-progress,#mission1 .stage1-spot{padding:13px}
+ #mission1 .stage1-option{padding:11px;gap:9px;grid-template-columns:31px minmax(0,1fr)}
+ #mission1 .stage1-option-letter{padding:5px}
+ #mission1 .map .hotspot{width:36px;height:36px}
+}
